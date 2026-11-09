@@ -29,6 +29,7 @@ UA = {"User-Agent": "Mozilla/5.0 (us-market-data fetcher)"}
 SP500_CSV = "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/main/data/constituents.csv"
 NDX_WIKI = "https://en.wikipedia.org/wiki/Nasdaq-100"
 NDX_API = "https://api.nasdaq.com/api/quote/list-type/nasdaq100"
+NDX_GH = "https://raw.githubusercontent.com/Gary-Strauss/NASDAQ100_Constituents/master/data/nasdaq100_constituents.csv"
 PREV_UNIVERSE = "https://raw.githubusercontent.com/sungholee0221-ops/us-market-data/data/universe.csv"
 BROWSER_UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
               "(KHTML, like Gecko) Chrome/130.0 Safari/537.36")
@@ -41,7 +42,7 @@ def yahoo_symbol(t: str) -> str:
 
 def _ndx_nasdaq_api() -> pd.DataFrame:
     r = requests.get(
-        NDX_API, timeout=30,
+        NDX_API, timeout=10,
         headers={"User-Agent": BROWSER_UA, "Accept": "application/json, text/plain, */*",
                  "Origin": "https://www.nasdaq.com", "Referer": "https://www.nasdaq.com/"},
     )
@@ -49,6 +50,11 @@ def _ndx_nasdaq_api() -> pd.DataFrame:
     rows = r.json()["data"]["data"]["rows"]
     return pd.DataFrame({"ticker": [x["symbol"] for x in rows],
                          "name": [x.get("companyName", "") for x in rows]})
+
+
+def _ndx_github() -> pd.DataFrame:
+    n = pd.read_csv(io.StringIO(requests.get(NDX_GH, timeout=30).text))
+    return pd.DataFrame({"ticker": n["Ticker"], "name": n["Company"]})
 
 
 def _ndx_wikipedia() -> pd.DataFrame:
@@ -75,7 +81,7 @@ def _ndx_previous() -> pd.DataFrame:
 
 def load_ndx100() -> pd.DataFrame | None:
     """Nasdaq API -> Wikipedia -> last published list. Additive: None if all fail."""
-    for label, fn in (("nasdaq-api", _ndx_nasdaq_api), ("wikipedia", _ndx_wikipedia),
+    for label, fn in (("nasdaq-api", _ndx_nasdaq_api), ("github-list", _ndx_github), ("wikipedia", _ndx_wikipedia),
                       ("previous-data-branch", _ndx_previous)):
         try:
             df = fn()

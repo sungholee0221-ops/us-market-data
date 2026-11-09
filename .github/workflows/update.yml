@@ -4,6 +4,14 @@ on:
   schedule:
     - cron: "17 22 * * 1-5"   # 22:17 UTC, after US close in both EST/EDT
   workflow_dispatch: {}
+  push:                      # Claude sessions trigger a refresh by committing to main
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - "universe/**"
+      - "requirements.txt"
+      - ".github/workflows/update.yml"
+      - "REFRESH"
 
 permissions:
   contents: write

@@ -42,13 +42,20 @@ def load_universe() -> pd.DataFrame:
 
     try:
         html = requests.get(NDX_WIKI, headers=UA, timeout=30).text
-        for t in pd.read_html(io.StringIO(html)):
-            cols = {c.lower(): c for c in t.columns.astype(str)}
-            tk = cols.get("ticker") or cols.get("symbol")
-            nm = cols.get("company") or cols.get("security")
-            if tk and nm and len(t) >= 90:
+        found = False
+        for t in pd.read_html(io.StringIO(html), match="Ticker"):
+            if isinstance(t.columns, pd.MultiIndex):
+                t.columns = t.columns.get_level_values(-1)
+            cols = {str(c).strip().lower(): c for c in t.columns}
+            tk = next((cols[k] for k in cols if k.startswith(("ticker", "symbol"))), None)
+            nm = next((cols[k] for k in cols if k.startswith(("company", "security"))), None)
+            print(f"ndx table candidate: rows={len(t)} cols={list(cols)}")
+            if tk is not None and nm is not None and len(t) >= 90:
                 frames.append(pd.DataFrame({"ticker": t[tk], "name": t[nm], "source": "ndx100"}))
+                found = True
                 break
+        if not found:
+            print("WARN ndx100 table not found", file=sys.stderr)
     except Exception as e:  # NDX list is additive; S&P 500 alone is still usable
         print(f"WARN ndx100 list failed: {e}", file=sys.stderr)
 

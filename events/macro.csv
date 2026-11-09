@@ -1,0 +1,13 @@
+date,time_et,time_kst,event,impact,source
+2026-11-10,08:30,2026-11-10 22:30,CPI (Oct),high,https://www.bls.gov/schedule/2026/11_sched_list.htm
+2026-11-26,,,Thanksgiving: market closed,info,https://www.bls.gov/schedule/2026/11_sched_list.htm
+2026-11-27,13:00,2026-11-28 03:00,Early close (13:00 ET),info,
+2026-12-04,08:30,2026-12-04 22:30,Employment Situation (Nov),high,https://www.bls.gov/schedule/news_release/empsit.htm
+2026-12-09,14:00,2026-12-10 04:00,FOMC decision (Dec 8-9 meeting),high,https://www.kitco.com/news/off-the-wire/2026-11-06/wall-st-week-ahead-tech-swoon-roils-market-us-inflation-data-tap
+2026-12-10,08:30,2026-12-10 22:30,CPI (Nov),high,https://www.bls.gov/schedule/2026/12_sched_list.htm
+2026-12-15,08:30,2026-12-15 22:30,PPI (Nov),medium,https://www.bls.gov/schedule/news_release/ppi.htm
+2026-12-24,13:00,2026-12-25 03:00,Early close (13:00 ET),info,
+2026-12-25,,,Christmas: market closed,info,
+2027-01-01,,,New Year: market closed,info,
+2027-01-08,08:30,2027-01-08 22:30,Employment Situation (Dec),high,https://www.bls.gov/schedule/news_release/empsit.htm
+2027-01-13,08:30,2027-01-13 22:30,CPI (Dec),high,https://www.bls.gov/schedule/2027/home.htm

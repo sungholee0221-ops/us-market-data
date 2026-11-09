@@ -28,10 +28,65 @@ UA = {"User-Agent": "Mozilla/5.0 (us-market-data fetcher)"}
 
 SP500_CSV = "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/main/data/constituents.csv"
 NDX_WIKI = "https://en.wikipedia.org/wiki/Nasdaq-100"
+NDX_API = "https://api.nasdaq.com/api/quote/list-type/nasdaq100"
+PREV_UNIVERSE = "https://raw.githubusercontent.com/sungholee0221-ops/us-market-data/data/universe.csv"
+BROWSER_UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+              "(KHTML, like Gecko) Chrome/130.0 Safari/537.36")
+WIKI_UA = "us-market-data/1.0 (https://github.com/sungholee0221-ops/us-market-data)"
 
 
 def yahoo_symbol(t: str) -> str:
     return t.strip().upper().replace(".", "-")
+
+
+def _ndx_nasdaq_api() -> pd.DataFrame:
+    r = requests.get(
+        NDX_API, timeout=30,
+        headers={"User-Agent": BROWSER_UA, "Accept": "application/json, text/plain, */*",
+                 "Origin": "https://www.nasdaq.com", "Referer": "https://www.nasdaq.com/"},
+    )
+    r.raise_for_status()
+    rows = r.json()["data"]["data"]["rows"]
+    return pd.DataFrame({"ticker": [x["symbol"] for x in rows],
+                         "name": [x.get("companyName", "") for x in rows]})
+
+
+def _ndx_wikipedia() -> pd.DataFrame:
+    r = requests.get(NDX_WIKI, timeout=30, headers={"User-Agent": WIKI_UA})
+    r.raise_for_status()
+    for t in pd.read_html(io.StringIO(r.text)):
+        if isinstance(t.columns, pd.MultiIndex):
+            t.columns = t.columns.get_level_values(-1)
+        cols = {str(c).strip().lower(): c for c in t.columns}
+        tk = next((cols[k] for k in cols if k.startswith(("ticker", "symbol"))), None)
+        nm = next((cols[k] for k in cols if k.startswith(("company", "security"))), None)
+        if tk is not None and nm is not None and len(t) >= 90:
+            return pd.DataFrame({"ticker": t[tk], "name": t[nm]})
+    raise ValueError("no constituents table")
+
+
+def _ndx_previous() -> pd.DataFrame:
+    u = pd.read_csv(io.StringIO(requests.get(PREV_UNIVERSE, timeout=30).text))
+    u = u[u["source"] == "ndx100"]
+    if u.empty:
+        raise ValueError("no ndx100 rows in previous universe")
+    return u[["ticker", "name"]]
+
+
+def load_ndx100() -> pd.DataFrame | None:
+    """Nasdaq API -> Wikipedia -> last published list. Additive: None if all fail."""
+    for label, fn in (("nasdaq-api", _ndx_nasdaq_api), ("wikipedia", _ndx_wikipedia),
+                      ("previous-data-branch", _ndx_previous)):
+        try:
+            df = fn()
+            if len(df) >= 90:
+                print(f"ndx100: {len(df)} tickers from {label}")
+                df["source"] = "ndx100"
+                return df
+            print(f"WARN ndx100 {label}: only {len(df)} rows", file=sys.stderr)
+        except Exception as e:
+            print(f"WARN ndx100 {label} failed: {e}", file=sys.stderr)
+    return None
 
 
 def load_universe() -> pd.DataFrame:
@@ -40,24 +95,9 @@ def load_universe() -> pd.DataFrame:
     sp = pd.read_csv(io.StringIO(requests.get(SP500_CSV, headers=UA, timeout=30).text))
     frames.append(pd.DataFrame({"ticker": sp["Symbol"], "name": sp["Security"], "source": "sp500"}))
 
-    try:
-        html = requests.get(NDX_WIKI, headers=UA, timeout=30).text
-        found = False
-        for t in pd.read_html(io.StringIO(html), match="Ticker"):
-            if isinstance(t.columns, pd.MultiIndex):
-                t.columns = t.columns.get_level_values(-1)
-            cols = {str(c).strip().lower(): c for c in t.columns}
-            tk = next((cols[k] for k in cols if k.startswith(("ticker", "symbol"))), None)
-            nm = next((cols[k] for k in cols if k.startswith(("company", "security"))), None)
-            print(f"ndx table candidate: rows={len(t)} cols={list(cols)}")
-            if tk is not None and nm is not None and len(t) >= 90:
-                frames.append(pd.DataFrame({"ticker": t[tk], "name": t[nm], "source": "ndx100"}))
-                found = True
-                break
-        if not found:
-            print("WARN ndx100 table not found", file=sys.stderr)
-    except Exception as e:  # NDX list is additive; S&P 500 alone is still usable
-        print(f"WARN ndx100 list failed: {e}", file=sys.stderr)
+    ndx = load_ndx100()
+    if ndx is not None:
+        frames.append(ndx)
 
     extra = pd.read_csv(ROOT / "universe" / "extra.csv")
     extra["source"] = "extra"

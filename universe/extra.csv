@@ -1,0 +1,24 @@
+ticker,name
+SPY,SPDR S&P 500 ETF
+QQQ,Invesco QQQ Trust
+IWM,iShares Russell 2000 ETF
+DIA,SPDR Dow Jones Industrial Average ETF
+RSP,Invesco S&P 500 Equal Weight ETF
+XLK,Technology Select Sector SPDR
+XLV,Health Care Select Sector SPDR
+XLF,Financial Select Sector SPDR
+XLI,Industrial Select Sector SPDR
+XLE,Energy Select Sector SPDR
+XLY,Consumer Discretionary Select Sector SPDR
+XLP,Consumer Staples Select Sector SPDR
+XLU,Utilities Select Sector SPDR
+XLB,Materials Select Sector SPDR
+XLRE,Real Estate Select Sector SPDR
+XLC,Communication Services Select Sector SPDR
+SMH,VanEck Semiconductor ETF
+IBB,iShares Biotechnology ETF
+XBI,SPDR S&P Biotech ETF
+GLD,SPDR Gold Shares
+SGOV,iShares 0-3 Month Treasury Bond ETF
+TLT,iShares 20+ Year Treasury Bond ETF
+^VIX,CBOE Volatility Index

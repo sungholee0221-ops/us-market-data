@@ -1,0 +1,45 @@
+name: update-prices
+
+on:
+  schedule:
+    - cron: "17 22 * * 1-5"   # 22:17 UTC, after US close in both EST/EDT
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-prices
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Fetch
+        env:
+          OUT_DIR: ${{ runner.temp }}/out
+        run: python scripts/fetch.py
+
+      # data branch is a single orphan commit, force-pushed daily: repo size stays flat
+      - name: Publish to data branch
+        env:
+          OUT_DIR: ${{ runner.temp }}/out
+        run: |
+          cd "$OUT_DIR"
+          git init -q -b data
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "data $(jq -r .last_date meta.json)"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" data

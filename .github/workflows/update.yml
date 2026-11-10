@@ -3,6 +3,7 @@ name: update-prices
 on:
   schedule:
     - cron: "17 22 * * 1-5"   # 22:17 UTC, after US close in both EST/EDT
+    - cron: "47 1 * * 2-6"    # backup: scheduled runs can be dropped under GitHub load
   workflow_dispatch: {}
   push:                      # Claude sessions trigger a refresh by committing to main
     branches: [main]

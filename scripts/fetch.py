@@ -164,6 +164,12 @@ def main() -> int:
     px["volume"] = px["volume"].fillna(0).astype("int64")
     for c in ["open", "high", "low", "close"]:
         px[c] = px[c].astype("float64").round(4)
+    # drop partial sessions (e.g. a run before the open returns a bar for a handful of tickers)
+    per_day = px.groupby("date")["ticker"].nunique()
+    partial = per_day[per_day < 0.5 * per_day.max()].index
+    if len(partial):
+        print(f"dropping partial dates: {[str(d) for d in partial]}")
+        px = px[~px["date"].isin(partial)]
     px = px.sort_values(["ticker", "date"]).reset_index(drop=True)
 
     got_n = px["ticker"].nunique()

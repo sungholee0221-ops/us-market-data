@@ -53,6 +53,78 @@ def etf_table(px: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows).sort_values("ret_1m", ascending=False)
 
 
+INDEX_LABELS = {"^GSPC": "S&P 500", "^IXIC": "Nasdaq", "^DJI": "Dow", "^SOX": "필라델피아 반도체", "^VIX": "VIX"}
+
+
+def market(px: pd.DataFrame, sp: pd.DataFrame, data_dir: Path, out: Path) -> None:
+    """Market-overview CSVs: index summary + intraday, breadth, S&P 500 heatmap, Fear & Greed."""
+    # index summary
+    rows = []
+    for t, lab in INDEX_LABELS.items():
+        g = px[px["ticker"] == t].sort_values("date")
+        if len(g) < 2:
+            continue
+        c = g["close"].reset_index(drop=True)
+        rows.append({"ticker": t, "label": lab, "date": str(g["date"].iat[-1]), "close": c.iat[-1],
+                     "prev_close": c.iat[-2], "chg": c.iat[-1] - c.iat[-2], "chg_pct": c.iat[-1] / c.iat[-2] - 1,
+                     "from_high": c.iat[-1] / g["high"].iloc[-252:].max() - 1})
+    pd.DataFrame(rows).round(4).to_csv(out / "idx_summary.csv", index=False)
+
+    intra = data_dir / "intraday.csv"
+    if intra.exists():
+        i = pd.read_csv(intra)
+        i["t"] = i["ts"].str[11:16]
+        i = i[(i["t"] >= "09:30") & (i["t"] <= "16:00")]
+        i["label"] = i["ticker"].map(INDEX_LABELS)
+        i[["ticker", "label", "t", "close"]].round(4).to_csv(out / "idx_intraday.csv", index=False)
+
+    # breadth over the stock universe
+    stocks = px[~px["ticker"].str.startswith("^") & ~px["ticker"].isin(screen.ETF_LIKE)]
+    last = stocks["date"].max()
+    b = {"adv": 0, "dec": 0, "nh": 0, "nl": 0, "a50": 0, "b50": 0, "a200": 0, "b200": 0}
+    for _, g in stocks.groupby("ticker"):
+        g = g.sort_values("date")
+        if g["date"].iat[-1] != last or len(g) < 200:
+            continue
+        c = g["close"]
+        b["adv" if c.iat[-1] > c.iat[-2] else "dec"] += c.iat[-1] != c.iat[-2]
+        prior = g.iloc[-252:-1]
+        b["nh"] += g["high"].iat[-1] >= prior["high"].max()
+        b["nl"] += g["low"].iat[-1] <= prior["low"].min()
+        s50, s200 = c.iloc[-50:].mean(), c.iloc[-200:].mean()
+        b["a50" if c.iat[-1] > s50 else "b50"] += 1
+        b["a200" if c.iat[-1] > s200 else "b200"] += 1
+    pd.DataFrame([
+        {"metric": "adv_dec", "left": "상승", "right": "하락", "left_n": b["adv"], "right_n": b["dec"]},
+        {"metric": "nh_nl", "left": "52주 신고가", "right": "52주 신저가", "left_n": b["nh"], "right_n": b["nl"]},
+        {"metric": "sma50", "left": "50일선 위", "right": "50일선 아래", "left_n": b["a50"], "right_n": b["b50"]},
+        {"metric": "sma200", "left": "200일선 위", "right": "200일선 아래", "left_n": b["a200"], "right_n": b["b200"]},
+    ]).astype({"left_n": int, "right_n": int}).to_csv(out / "breadth.csv", index=False)
+
+    # S&P 500 heatmap: 1-day change, sized by market cap
+    lastd = px[px["date"] == last].set_index("ticker")["close"]
+    prevd = (px[px["date"] < last].sort_values("date").groupby("ticker")["close"].last())
+    chg = (lastd / prevd - 1).rename("chg_pct")
+    hm = sp[["ticker", "name", "sector", "industry"]].merge(chg, left_on="ticker", right_index=True)
+    mc_path = data_dir / "marketcap.csv"
+    if mc_path.exists():
+        hm = hm.merge(pd.read_csv(mc_path), on="ticker", how="left")
+    else:
+        hm["market_cap"] = None
+    hm["market_cap"] = hm["market_cap"].fillna(hm["market_cap"].median())
+    hm.dropna(subset=["chg_pct"]).round({"chg_pct": 4}).to_csv(out / "heatmap.csv", index=False)
+
+    # Fear & Greed
+    fj = data_dir / "fng.json"
+    if fj.exists():
+        s = json.loads(fj.read_text())
+        pd.DataFrame([s]).round(1).to_csv(out / "fng.csv", index=False)
+    fh = data_dir / "fng_history.csv"
+    if fh.exists():
+        h = pd.read_csv(fh)
+        h[h["date"] >= str(date.fromisoformat(str(last)) - pd.Timedelta(days=365))].to_csv(out / "fng_history.csv", index=False)
+
+
 def main(prices, plan_path, sp_path, events_path, out_dir) -> None:
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
@@ -99,7 +171,8 @@ def main(prices, plan_path, sp_path, events_path, out_dir) -> None:
     ev = ev[pd.to_datetime(ev["date"]).dt.date >= date.fromisoformat(plan.get("as_of", data_date))]
     ev.to_csv(out / "events.csv", index=False)
 
-    spy = full[full["ticker"].isin(["SPY"])]
+    market(px, meta, Path(prices).parent, out)
+
     pd.DataFrame([{
         "theme": plan.get("theme", ""), "budget": plan.get("budget"),
         "data_date": data_date, "plan_as_of": plan.get("as_of"),

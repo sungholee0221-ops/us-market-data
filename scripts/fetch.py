@@ -166,6 +166,7 @@ def main() -> int:
         px[c] = px[c].astype("float64").round(4)
     # drop partial sessions (e.g. a run before the open returns a bar for a handful of tickers)
     per_day = px.groupby("date")["ticker"].nunique()
+    print("tickers per day (last 4):", {str(k): int(v) for k, v in per_day.tail(4).items()})
     partial = per_day[per_day < 0.5 * per_day.max()].index
     if len(partial):
         print(f"dropping partial dates: {[str(d) for d in partial]}")

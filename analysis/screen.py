@@ -60,7 +60,8 @@ def per_ticker(g: pd.DataFrame) -> dict:
 def screen(prices: pd.DataFrame, tickers: list[str] | None = None) -> pd.DataFrame:
     rows = [per_ticker(g) for _, g in prices.groupby("ticker", sort=False)]
     df = pd.DataFrame(rows)
-    stocks = ~df["ticker"].isin(ETF_LIKE) & df["rs_raw"].notna()
+    nonstock = df["ticker"].isin(ETF_LIKE) | df["ticker"].str.startswith("^")
+    stocks = ~nonstock & df["rs_raw"].notna()
     df.loc[stocks, "rs_pct"] = df.loc[stocks, "rs_raw"].rank(pct=True).mul(99).round()
     df["c8"] = df["rs_pct"] >= 70
     conds = [f"c{i}" for i in range(1, 9)]
@@ -75,7 +76,7 @@ def screen(prices: pd.DataFrame, tickers: list[str] | None = None) -> pd.DataFra
         want = [t.upper().replace(".", "-") for t in tickers]
         df = df.set_index("ticker").reindex(want).reset_index()
     else:
-        df = df[~df["ticker"].isin(ETF_LIKE)].sort_values("rs_pct", ascending=False)
+        df = df[~(df["ticker"].isin(ETF_LIKE) | df["ticker"].str.startswith("^"))].sort_values("rs_pct", ascending=False)
     return df
 
 

@@ -70,6 +70,16 @@ def market(px: pd.DataFrame, sp: pd.DataFrame, data_dir: Path, out: Path) -> Non
                      "from_high": c.iat[-1] / g["high"].iloc[-252:].max() - 1})
     pd.DataFrame(rows).round(4).to_csv(out / "idx_summary.csv", index=False)
 
+    # index daily bars (last ~6 months) with 50/150/200-day SMAs computed on the full history
+    daily = []
+    for t in INDEX_LABELS:
+        g = px[px["ticker"] == t].sort_values("date").copy()
+        for n in (50, 150, 200):
+            g[f"sma{n}"] = g["close"].rolling(n).mean()
+        daily.append(g.tail(126))
+    (pd.concat(daily)[["ticker", "date", "open", "high", "low", "close", "sma50", "sma150", "sma200"]]
+     .round(2).to_csv(out / "idx_daily.csv", index=False))
+
     intra = data_dir / "intraday.csv"
     if intra.exists():
         i = pd.read_csv(intra)

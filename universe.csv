@@ -1,0 +1,549 @@
+ticker,name,source
+A,Agilent Technologies,sp500
+AAPL,Apple Inc.,sp500
+ABBV,AbbVie,sp500
+ABNB,Airbnb,sp500
+ABT,Abbott Laboratories,sp500
+ACGL,Arch Capital Group,sp500
+ACN,Accenture,sp500
+ADBE,Adobe Inc.,sp500
+ADI,Analog Devices,sp500
+ADM,Archer Daniels Midland,sp500
+ADP,Automatic Data Processing,sp500
+ADSK,Autodesk,sp500
+AEE,Ameren,sp500
+AEP,American Electric Power,sp500
+AES,AES Corporation,sp500
+AFL,Aflac,sp500
+AIG,American International Group,sp500
+AIZ,Assurant,sp500
+AJG,Arthur J. Gallagher & Co.,sp500
+AKAM,Akamai Technologies,sp500
+ALAB,"Astera Labs, Inc. Common Stock",ndx100
+ALB,Albemarle Corporation,sp500
+ALGN,Align Technology,sp500
+ALL,Allstate,sp500
+ALLE,Allegion,sp500
+ALNY,"Alnylam Pharmaceuticals, Inc. Common Stock",ndx100
+AMAT,Applied Materials,sp500
+AMCR,Amcor,sp500
+AMD,Advanced Micro Devices,sp500
+AME,Ametek,sp500
+AMGN,Amgen,sp500
+AMP,Ameriprise Financial,sp500
+AMT,American Tower,sp500
+AMZN,Amazon,sp500
+ANET,Arista Networks,sp500
+AON,Aon plc,sp500
+AOS,A. O. Smith,sp500
+APA,APA Corporation,sp500
+APD,Air Products,sp500
+APH,Amphenol,sp500
+APO,Apollo Global Management,sp500
+APP,AppLovin,sp500
+APTV,Aptiv,sp500
+ARE,Alexandria Real Estate Equities,sp500
+ARES,Ares Management,sp500
+ARM,Arm Holdings plc American Depositary Shares,ndx100
+ASML,ASML Holding N.V. New York Registry Shares,ndx100
+ATO,Atmos Energy,sp500
+AVGO,Broadcom,sp500
+AVY,Avery Dennison,sp500
+AWK,American Water Works,sp500
+AXON,Axon Enterprise,sp500
+AXP,American Express,sp500
+AZO,AutoZone,sp500
+BA,Boeing,sp500
+BAC,Bank of America,sp500
+BALL,Ball Corporation,sp500
+BAX,Baxter International,sp500
+BBY,Best Buy,sp500
+BDX,Becton Dickinson,sp500
+BE,Bloom Energy,sp500
+BEN,Franklin Resources,sp500
+BF-B,Brown–Forman,sp500
+BG,Bunge Global,sp500
+BIIB,Biogen,sp500
+BKNG,Booking Holdings,sp500
+BKR,Baker Hughes,sp500
+BLK,BlackRock,sp500
+BMY,Bristol Myers Squibb,sp500
+BNY,BNY Mellon,sp500
+BR,Broadridge Financial Solutions,sp500
+BRK-B,Berkshire Hathaway,sp500
+BRO,Brown & Brown,sp500
+BSX,Boston Scientific,sp500
+BX,Blackstone Inc.,sp500
+BXP,"BXP, Inc.",sp500
+C,Citigroup,sp500
+CAH,Cardinal Health,sp500
+CARR,Carrier Global,sp500
+CASY,Casey's,sp500
+CAT,Caterpillar Inc.,sp500
+CB,Chubb Limited,sp500
+CBOE,Cboe Global Markets,sp500
+CBRE,CBRE Group,sp500
+CCEP,Coca-Cola Europacific Partners plc Ordinary Shares,ndx100
+CCI,Crown Castle,sp500
+CCL,Carnival Corporation,sp500
+CDNS,Cadence Design Systems,sp500
+CDW,CDW Corporation,sp500
+CEG,Constellation Energy,sp500
+CF,CF Industries,sp500
+CFG,Citizens Financial Group,sp500
+CHD,Church & Dwight,sp500
+CHRW,C.H. Robinson,sp500
+CHTR,Charter Communications,sp500
+CI,Cigna,sp500
+CIEN,Ciena,sp500
+CINF,Cincinnati Financial,sp500
+CL,Colgate-Palmolive,sp500
+CLX,Clorox,sp500
+CMCSA,Comcast,sp500
+CME,CME Group,sp500
+CMG,Chipotle Mexican Grill,sp500
+CMI,Cummins,sp500
+CMS,CMS Energy,sp500
+CNC,Centene Corporation,sp500
+CNP,CenterPoint Energy,sp500
+COF,Capital One,sp500
+COHR,Coherent Corp.,sp500
+COIN,Coinbase,sp500
+COO,Cooper Companies (The),sp500
+COP,ConocoPhillips,sp500
+COR,Cencora,sp500
+COST,Costco,sp500
+CPAY,Corpay,sp500
+CPRT,Copart,sp500
+CPT,Camden Property Trust,sp500
+CRH,CRH plc,sp500
+CRL,Charles River Laboratories,sp500
+CRM,Salesforce,sp500
+CRWD,CrowdStrike,sp500
+CRWV,"CoreWeave, Inc. Class A Common Stock",ndx100
+CSCO,Cisco,sp500
+CSGP,CoStar Group,sp500
+CSX,CSX Corporation,sp500
+CTAS,Cintas,sp500
+CTSH,Cognizant,sp500
+CVNA,Carvana,sp500
+CVS,CVS Health,sp500
+CVX,Chevron Corporation,sp500
+D,Dominion Energy,sp500
+DAL,Delta Air Lines,sp500
+DASH,DoorDash,sp500
+DD,DuPont,sp500
+DDOG,Datadog,sp500
+DE,Deere & Company,sp500
+DECK,Deckers Brands,sp500
+DELL,Dell Technologies,sp500
+DG,Dollar General,sp500
+DGX,Quest Diagnostics,sp500
+DHI,D. R. Horton,sp500
+DHR,Danaher Corporation,sp500
+DIA,SPDR Dow Jones Industrial Average ETF,extra
+DIS,Walt Disney Company (The),sp500
+DLR,Digital Realty,sp500
+DLTR,Dollar Tree,sp500
+DOC,Healthpeak Properties,sp500
+DOV,Dover Corporation,sp500
+DOW,Dow Inc.,sp500
+DPZ,Domino's,sp500
+DRI,Darden Restaurants,sp500
+DTE,DTE Energy,sp500
+DUK,Duke Energy,sp500
+DVA,DaVita,sp500
+DVN,Devon Energy,sp500
+DXCM,Dexcom,sp500
+EBAY,eBay Inc.,sp500
+ECHO,EchoStar,sp500
+ECL,Ecolab,sp500
+ED,Consolidated Edison,sp500
+EFX,Equifax,sp500
+EG,Everest Group,sp500
+EIX,Edison International,sp500
+EL,Estée Lauder Companies (The),sp500
+ELV,Elevance Health,sp500
+EME,Emcor,sp500
+EMR,Emerson Electric,sp500
+EOG,EOG Resources,sp500
+EQIX,Equinix,sp500
+EQT,EQT Corporation,sp500
+ERIE,Erie Indemnity,sp500
+ES,Eversource Energy,sp500
+ESS,Essex Property Trust,sp500
+ETN,Eaton Corporation,sp500
+ETR,Entergy,sp500
+EVRG,Evergy,sp500
+EW,Edwards Lifesciences,sp500
+EXC,Exelon,sp500
+EXE,Expand Energy,sp500
+EXPD,Expeditors International,sp500
+EXPE,Expedia Group,sp500
+EXR,Extra Space Storage,sp500
+F,Ford Motor Company,sp500
+FANG,Diamondback Energy,sp500
+FAST,Fastenal,sp500
+FCX,Freeport-McMoRan,sp500
+FDS,FactSet,sp500
+FDX,FedEx,sp500
+FDXF,FedEx Freight,sp500
+FE,FirstEnergy,sp500
+FER,Ferrovial N.V. Ordinary Shares,ndx100
+FERG,Ferguson Enterprises,sp500
+FFIV,"F5, Inc.",sp500
+FICO,Fair Isaac,sp500
+FIS,Fidelity National Information Services,sp500
+FISV,Fiserv,sp500
+FITB,Fifth Third Bancorp,sp500
+FIX,Comfort Systems USA,sp500
+FLEX,Flex Ltd.,sp500
+FOX,Fox Corporation (Class B),sp500
+FOXA,Fox Corporation (Class A),sp500
+FRT,Federal Realty Investment Trust,sp500
+FSLR,First Solar,sp500
+FTNT,Fortinet,sp500
+FTV,Fortive,sp500
+GD,General Dynamics,sp500
+GDDY,GoDaddy,sp500
+GE,GE Aerospace,sp500
+GEHC,GE HealthCare,sp500
+GEN,Gen Digital,sp500
+GEV,GE Vernova,sp500
+GILD,Gilead Sciences,sp500
+GIS,General Mills,sp500
+GL,Globe Life,sp500
+GLD,SPDR Gold Shares,extra
+GLW,Corning Inc.,sp500
+GM,General Motors,sp500
+GNRC,Generac,sp500
+GOOG,Alphabet Inc. (Class C),sp500
+GOOGL,Alphabet Inc. (Class A),sp500
+GPC,Genuine Parts Company,sp500
+GPN,Global Payments,sp500
+GRMN,Garmin,sp500
+GS,Goldman Sachs,sp500
+GWW,W. W. Grainger,sp500
+HAL,Halliburton,sp500
+HAS,Hasbro,sp500
+HBAN,Huntington Bancshares,sp500
+HCA,HCA Healthcare,sp500
+HD,Home Depot (The),sp500
+HIG,Hartford (The),sp500
+HII,Huntington Ingalls Industries,sp500
+HLT,Hilton Worldwide,sp500
+HON,Honeywell Technologies,sp500
+HONA,Honeywell Aerospace,sp500
+HOOD,Robinhood Markets,sp500
+HPE,Hewlett Packard Enterprise,sp500
+HPQ,HP Inc.,sp500
+HRL,Hormel Foods,sp500
+HSIC,Henry Schein,sp500
+HST,Host Hotels & Resorts,sp500
+HSY,Hershey Company (The),sp500
+HUBB,Hubbell Incorporated,sp500
+HUM,Humana,sp500
+HWM,Howmet Aerospace,sp500
+IBB,iShares Biotechnology ETF,extra
+IBKR,Interactive Brokers,sp500
+IBM,IBM,sp500
+ICE,Intercontinental Exchange,sp500
+IDXX,Idexx Laboratories,sp500
+IEX,IDEX Corporation,sp500
+IFF,International Flavors & Fragrances,sp500
+ILMN,"Illumina, Inc.",sp500
+INCY,Incyte,sp500
+INTC,Intel,sp500
+INTU,Intuit,sp500
+INVH,Invitation Homes,sp500
+IP,International Paper,sp500
+IQV,IQVIA,sp500
+IR,Ingersoll Rand,sp500
+IRM,Iron Mountain,sp500
+ISRG,Intuitive Surgical,sp500
+IT,Gartner,sp500
+ITW,Illinois Tool Works,sp500
+IVZ,Invesco,sp500
+IWM,iShares Russell 2000 ETF,extra
+J,Jacobs Solutions,sp500
+JBHT,J.B. Hunt,sp500
+JBL,Jabil,sp500
+JCI,Johnson Controls,sp500
+JKHY,Jack Henry & Associates,sp500
+JNJ,Johnson & Johnson,sp500
+JPM,JPMorgan Chase,sp500
+KDP,Keurig Dr Pepper,sp500
+KEY,KeyCorp,sp500
+KEYS,Keysight Technologies,sp500
+KHC,Kraft Heinz,sp500
+KIM,Kimco Realty,sp500
+KKR,KKR & Co.,sp500
+KLAC,KLA Corporation,sp500
+KMB,Kimberly-Clark,sp500
+KMI,Kinder Morgan,sp500
+KO,Coca-Cola Company (The),sp500
+KR,Kroger,sp500
+L,Loews Corporation,sp500
+LDOS,Leidos,sp500
+LEN,Lennar,sp500
+LH,Labcorp,sp500
+LHX,L3Harris,sp500
+LII,Lennox International,sp500
+LIN,Linde plc,sp500
+LITE,Lumentum,sp500
+LLY,Lilly (Eli),sp500
+LMT,Lockheed Martin,sp500
+LNT,Alliant Energy,sp500
+LOW,Lowe's,sp500
+LRCX,Lam Research,sp500
+LULU,Lululemon Athletica,sp500
+LUV,Southwest Airlines,sp500
+LVS,Las Vegas Sands,sp500
+LYB,LyondellBasell,sp500
+LYV,Live Nation Entertainment,sp500
+MA,Mastercard,sp500
+MAA,Mid-America Apartment Communities,sp500
+MAR,Marriott International,sp500
+MAS,Masco,sp500
+MCD,McDonald's,sp500
+MCHP,Microchip Technology,sp500
+MCK,McKesson,sp500
+MCO,Moody's Corporation,sp500
+MDLZ,Mondelez International,sp500
+MDT,Medtronic,sp500
+MELI,"MercadoLibre, Inc. Common Stock",ndx100
+MET,MetLife,sp500
+META,Meta Platforms,sp500
+MGM,MGM Resorts,sp500
+MKC,McCormick & Company,sp500
+MLM,Martin Marietta Materials,sp500
+MMM,3M,sp500
+MNST,Monster Beverage,sp500
+MO,Altria,sp500
+MOS,Mosaic Company (The),sp500
+MPC,Marathon Petroleum,sp500
+MPWR,Monolithic Power Systems,sp500
+MRK,Merck & Co.,sp500
+MRNA,Moderna,sp500
+MRSH,Marsh McLennan,sp500
+MRVL,Marvell Technology,sp500
+MS,Morgan Stanley,sp500
+MSCI,MSCI,sp500
+MSFT,Microsoft,sp500
+MSI,Motorola Solutions,sp500
+MSTR,Strategy Inc Common Stock Class A,ndx100
+MTB,M&T Bank,sp500
+MTD,Mettler Toledo,sp500
+MU,Micron Technology,sp500
+NBIS,Nebius Group N.V. Class A Ordinary Shares,ndx100
+NCLH,Norwegian Cruise Line Holdings,sp500
+NDAQ,"Nasdaq, Inc.",sp500
+NDSN,Nordson Corporation,sp500
+NEE,NextEra Energy,sp500
+NEM,Newmont,sp500
+NFLX,Netflix,sp500
+NI,NiSource,sp500
+NKE,"Nike, Inc.",sp500
+NOC,Northrop Grumman,sp500
+NOW,ServiceNow,sp500
+NRG,NRG Energy,sp500
+NSC,Norfolk Southern,sp500
+NTAP,NetApp,sp500
+NTRS,Northern Trust,sp500
+NUE,Nucor,sp500
+NVDA,Nvidia,sp500
+NVO,Novo Nordisk ADR,extra
+NVR,"NVR, Inc.",sp500
+NWS,News Corp (Class B),sp500
+NWSA,News Corp (Class A),sp500
+NXPI,NXP Semiconductors,sp500
+O,Realty Income,sp500
+ODFL,Old Dominion,sp500
+OKE,Oneok,sp500
+OKTA,"Okta, Inc.",sp500
+OMC,Omnicom Group,sp500
+ON,ON Semiconductor,sp500
+ORCL,Oracle Corporation,sp500
+ORLY,O'Reilly Automotive,sp500
+OTIS,Otis Worldwide,sp500
+OXY,Occidental Petroleum,sp500
+P,Everpure,sp500
+PANW,Palo Alto Networks,sp500
+PAYX,Paychex,sp500
+PCAR,Paccar,sp500
+PCG,PG&E Corporation,sp500
+PDD,PDD Holdings Inc. American Depositary Shares,ndx100
+PEG,Public Service Enterprise Group,sp500
+PEP,PepsiCo,sp500
+PFE,Pfizer,sp500
+PFG,Principal Financial Group,sp500
+PG,Procter & Gamble,sp500
+PGR,Progressive Corporation,sp500
+PH,Parker Hannifin,sp500
+PHM,PulteGroup,sp500
+PKG,Packaging Corporation of America,sp500
+PLD,Prologis,sp500
+PLTR,Palantir Technologies,sp500
+PM,Philip Morris International,sp500
+PNC,PNC Financial Services,sp500
+PNR,Pentair,sp500
+PNW,Pinnacle West Capital,sp500
+PODD,Insulet Corporation,sp500
+PPG,PPG Industries,sp500
+PPL,PPL Corporation,sp500
+PRU,Prudential Financial,sp500
+PSA,Public Storage,sp500
+PSX,Phillips 66,sp500
+PTC,PTC Inc.,sp500
+PWR,Quanta Services,sp500
+PYPL,PayPal,sp500
+Q,Qnity Electronics,sp500
+QCOM,Qualcomm,sp500
+QQQ,Invesco QQQ Trust,extra
+RCL,Royal Caribbean Group,sp500
+RDDT,Reddit,sp500
+REG,Regency Centers,sp500
+REGN,Regeneron Pharmaceuticals,sp500
+RF,Regions Financial Corporation,sp500
+RJF,Raymond James Financial,sp500
+RKLB,Rocket Lab Corporation Common Stock,ndx100
+RL,Ralph Lauren Corporation,sp500
+RMD,ResMed,sp500
+ROK,Rockwell Automation,sp500
+ROL,"Rollins, Inc.",sp500
+ROP,Roper Technologies,sp500
+ROST,Ross Stores,sp500
+RSG,Republic Services,sp500
+RSP,Invesco S&P 500 Equal Weight ETF,extra
+RTX,RTX Corporation,sp500
+RVTY,Revvity,sp500
+RXRX,Recursion Pharmaceuticals,extra
+SBAC,SBA Communications,sp500
+SBUX,Starbucks,sp500
+SCHW,Charles Schwab Corporation,sp500
+SGOV,iShares 0-3 Month Treasury Bond ETF,extra
+SHOP,Shopify Inc. Class A Subordinate Voting Shares,ndx100
+SHW,Sherwin-Williams,sp500
+SJM,J.M. Smucker Company (The),sp500
+SKYD,Skydance,sp500
+SLB,Schlumberger,sp500
+SMCI,Supermicro,sp500
+SMH,VanEck Semiconductor ETF,extra
+SNA,Snap-on,sp500
+SNDK,Sandisk,sp500
+SNPS,Synopsys,sp500
+SO,Southern Company,sp500
+SOLV,Solventum,sp500
+SPCX,Space Exploration Technologies Corp. Class A Common Stock,ndx100
+SPG,Simon Property Group,sp500
+SPGI,S&P Global,sp500
+SPY,SPDR S&P 500 ETF,extra
+SRE,Sempra,sp500
+STE,Steris,sp500
+STLD,Steel Dynamics,sp500
+STT,State Street Corporation,sp500
+STX,Seagate Technology,sp500
+STZ,Constellation Brands,sp500
+SW,Smurfit Westrock,sp500
+SWK,Stanley Black & Decker,sp500
+SWKS,Skyworks Solutions,sp500
+SYF,Synchrony Financial,sp500
+SYK,Stryker Corporation,sp500
+SYY,Sysco,sp500
+T,AT&T,sp500
+TDG,TransDigm Group,sp500
+TDY,Teledyne Technologies,sp500
+TECH,Bio-Techne,sp500
+TEL,TE Connectivity,sp500
+TER,Teradyne,sp500
+TFC,Truist Financial,sp500
+TGT,Target Corporation,sp500
+TJX,TJX Companies,sp500
+TKO,TKO Group Holdings,sp500
+TLT,iShares 20+ Year Treasury Bond ETF,extra
+TMO,Thermo Fisher Scientific,sp500
+TMUS,T-Mobile US,sp500
+TPL,Texas Pacific Land Corporation,sp500
+TPR,"Tapestry, Inc.",sp500
+TRGP,Targa Resources,sp500
+TRI,Thomson Reuters Corporation Common Shares,ndx100
+TRMB,Trimble Inc.,sp500
+TROW,T. Rowe Price,sp500
+TRV,Travelers Companies (The),sp500
+TSCO,Tractor Supply,sp500
+TSLA,"Tesla, Inc.",sp500
+TSM,Taiwan Semiconductor Manufacturing ADR,extra
+TSN,Tyson Foods,sp500
+TT,Trane Technologies,sp500
+TTWO,Take-Two Interactive,sp500
+TWLO,Twilio,sp500
+TXN,Texas Instruments,sp500
+TXT,Textron,sp500
+TYL,Tyler Technologies,sp500
+UAL,United Airlines Holdings,sp500
+UBER,Uber,sp500
+UDR,"UDR, Inc.",sp500
+UHS,Universal Health Services,sp500
+ULTA,Ulta Beauty,sp500
+UNH,UnitedHealth Group,sp500
+UNP,Union Pacific Corporation,sp500
+UPS,United Parcel Service,sp500
+URI,United Rentals,sp500
+USB,U.S. Bancorp,sp500
+V,Visa Inc.,sp500
+VEEV,Veeva Systems,sp500
+VICI,Vici Properties,sp500
+VLO,Valero Energy,sp500
+VLTO,Veralto,sp500
+VMC,Vulcan Materials Company,sp500
+VMRK,Vivmark Residential,sp500
+VRSK,Verisk Analytics,sp500
+VRSN,Verisign,sp500
+VRT,Vertiv,sp500
+VRTX,Vertex Pharmaceuticals,sp500
+VST,Vistra Corp.,sp500
+VTR,Ventas,sp500
+VTRS,Viatris,sp500
+VYLR,Vylor,sp500
+VZ,Verizon,sp500
+WAB,Wabtec,sp500
+WAT,Waters Corporation,sp500
+WDAY,"Workday, Inc.",sp500
+WDC,Western Digital,sp500
+WEC,WEC Energy Group,sp500
+WELL,Welltower,sp500
+WFC,Wells Fargo,sp500
+WM,Waste Management,sp500
+WMB,Williams Companies,sp500
+WMT,Walmart,sp500
+WRB,W. R. Berkley Corporation,sp500
+WSM,"Williams-Sonoma, Inc.",sp500
+WST,West Pharmaceutical Services,sp500
+WTW,Willis Towers Watson,sp500
+WY,Weyerhaeuser,sp500
+WYNN,Wynn Resorts,sp500
+XBI,SPDR S&P Biotech ETF,extra
+XEL,Xcel Energy,sp500
+XLB,Materials Select Sector SPDR,extra
+XLC,Communication Services Select Sector SPDR,extra
+XLE,Energy Select Sector SPDR,extra
+XLF,Financial Select Sector SPDR,extra
+XLI,Industrial Select Sector SPDR,extra
+XLK,Technology Select Sector SPDR,extra
+XLP,Consumer Staples Select Sector SPDR,extra
+XLRE,Real Estate Select Sector SPDR,extra
+XLU,Utilities Select Sector SPDR,extra
+XLV,Health Care Select Sector SPDR,extra
+XLY,Consumer Discretionary Select Sector SPDR,extra
+XOM,ExxonMobil,sp500
+XYL,Xylem Inc.,sp500
+XYZ,"Block, Inc.",sp500
+YUM,Yum! Brands,sp500
+ZBH,Zimmer Biomet,sp500
+ZBRA,Zebra Technologies,sp500
+ZTS,Zoetis,sp500
+^DJI,Dow Jones Industrial Average,extra
+^GSPC,S&P 500 Index,extra
+^IXIC,Nasdaq Composite,extra
+^SOX,PHLX Semiconductor Index,extra
+^VIX,CBOE Volatility Index,extra

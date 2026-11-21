@@ -13,7 +13,7 @@ import pandas as pd
 
 ETF_LIKE = {
     "SPY", "QQQ", "IWM", "DIA", "RSP", "XLK", "XLV", "XLF", "XLI", "XLE", "XLY", "XLP",
-    "XLU", "XLB", "XLRE", "XLC", "SMH", "IBB", "XBI", "GLD", "SGOV", "TLT", "^VIX",
+    "XLU", "XLB", "XLRE", "XLC", "SMH", "SOXX", "IBB", "XBI", "GLD", "SGOV", "TLT", "^VIX",
 }
 
 

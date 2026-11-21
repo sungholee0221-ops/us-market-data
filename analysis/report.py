@@ -29,7 +29,7 @@ import screen  # noqa: E402
 ETFS = {
     "SPY": "S&P 500", "RSP": "S&P 500 Equal Wt", "QQQ": "Nasdaq-100", "IWM": "Russell 2000",
     "XLV": "Health Care", "XLF": "Financials", "XLI": "Industrials", "XLE": "Energy",
-    "XLK": "Technology", "SMH": "Semiconductors", "XLP": "Staples", "XLU": "Utilities",
+    "XLK": "Technology", "SMH": "Semiconductors", "SOXX": "Semis (SOXX)", "XLP": "Staples", "XLU": "Utilities",
     "XLY": "Discretionary", "XLC": "Comm Services", "XLB": "Materials", "XLRE": "Real Estate",
     "IBB": "Biotech", "GLD": "Gold", "TLT": "20Y+ Treasury",
 }
